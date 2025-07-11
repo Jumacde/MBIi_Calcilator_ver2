@@ -51,6 +51,163 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fillViewport="true">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+
+                android:layout_marginTop="70dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="30dp"
+                android:background="@color/YankeesBlue">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="0dp">
+                    <TextView
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:text="height"
+                        android:background="@color/white"
+                        android:textColor="@color/MidnightGreen"
+                        android:textSize="30dp"
+                        android:padding="10dp"
+                        android:layout_margin="10dp"/>
+                    <EditText
+                        android:id="@+id/height"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="30dp"
+                        android:padding="10dp"
+                        android:layout_margin="10dp"
+                        android:background="@color/BrightGray"
+                        android:hint="0 cm"
+                        android:textColor="@color/black"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="0dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="weight"
+                        android:background="@color/white"
+                        android:textColor="@color/MidnightGreen"
+                        android:textSize="30dp"
+                        android:padding="10dp"
+                        android:layout_margin="10dp"/>
+                    <EditText
+                        android:id="@+id/weight"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="30dp"
+                        android:padding="10dp"
+                        android:layout_margin="10dp"
+                        android:background="@color/BrightGray"
+                        android:hint="0 kg"
+                        android:textColor="@color/black"/>
+                </LinearLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|center_horizontal"
+                    >
+                    <CheckBox
+                        android:id="@+id/checkbox"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:text="asian"
+                        android:textSize="20dp"
+                        android:layout_marginLeft="15dp"
+                        android:textColor="@color/YankeesBlue"
+                        android:background="@color/BrightGray"
+                        />
+                </RelativeLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="10dp"
+                    android:layout_gravity="center_vertical">
+                    <Button
+                        android:id="@+id/submit"
+                        android:onClick="pressSubmit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="20dp"
+                        android:backgroundTint="@color/RipeMango"
+                        android:textSize="20dp"
+                        android:text="submit" />
+                    <Button
+                        android:id="@+id/clear"
+                        android:onClick="pressClear"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="50dp"
+                        android:backgroundTint="@color/PictorialCarmine"
+                        android:text="clear"
+                        android:textColor="@color/CosmicLatte"
+                        android:textSize="20dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@color/white"
+                    android:padding="0dp"
+                    android:layout_margin="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center_vertical"
+                        android:layout_margin="10dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="BMI"
+                            android:background="@color/white"
+                            android:textColor="@color/black"
+                            android:textSize="30dp"
+                            android:padding="10dp"
+                            android:layout_margin="10dp"/>
+
+                        <TextView
+                            android:id="@+id/bmiText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:background="@color/BrightGray"
+                            android:padding="10dp"
+                            android:text="0 "
+                            android:textColor="@color/black"
+                            android:textSize="34sp" />
+                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/commentText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:layout_margin="10dp"
+                        android:background="@color/BrightGray"
+                        android:text=""
+                        android:textColor="@color/black"
+                        android:textSize="34sp" />
+                </LinearLayout>
+            </LinearLayout>
 
 
         </ScrollView>
