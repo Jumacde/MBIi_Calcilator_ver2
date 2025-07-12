@@ -5,13 +5,13 @@ import android.annotation.SuppressLint;
 import com.example.mbii_calcilator_ver2.DisplayController;
 import com.example.mbii_calcilator_ver2.BMICalculate;
 
-public class DisplayControllerController_impl implements DisplayController {
+public class DisplayController_impl implements DisplayController {
     private final BMICalculate bmiCalculate;
     private String bmiDisplay;
     private String commentDisplay;
     private double num;
 
-    public DisplayControllerController_impl(BMICalculate bmiCalculate) {
+    public DisplayController_impl(BMICalculate bmiCalculate) {
         this.bmiCalculate = bmiCalculate;
         clearDisplay();
     }

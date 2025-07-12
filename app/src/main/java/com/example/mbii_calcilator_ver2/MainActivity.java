@@ -27,7 +27,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.mbii_calcilator_ver2.impl.BMICalculate_impl;
 import com.example.mbii_calcilator_ver2.impl.ButtonController_impl;
-import com.example.mbii_calcilator_ver2.impl.DisplayControllerController_impl;
+import com.example.mbii_calcilator_ver2.impl.DisplayController_impl;
 
 public class MainActivity extends AppCompatActivity {
     private TextView tvBMI, tvComment;
@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         setupDrawerBackIcon();
 
         bmiCalculate = new BMICalculate_impl();
-        displayController = new DisplayControllerController_impl(bmiCalculate);
+        displayController = new DisplayController_impl(bmiCalculate);
         buttonController = new ButtonController_impl(bmiCalculate);
 
 
