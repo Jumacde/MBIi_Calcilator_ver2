@@ -1,6 +1,6 @@
 package com.example.mbii_calcilator_ver2;
 
-public interface MBICalclate {
+public interface BMICalculate {
     // getter
     String getHeight();
     String getWeight();

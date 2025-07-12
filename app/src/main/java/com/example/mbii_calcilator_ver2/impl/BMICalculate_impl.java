@@ -1,8 +1,8 @@
 package com.example.mbii_calcilator_ver2.impl;
 
-import com.example.mbii_calcilator_ver2.MBICalclate;
+import com.example.mbii_calcilator_ver2.BMICalculate;
 
-public class MBICalclate_impl implements MBICalclate {
+public class BMICalculate_impl implements BMICalculate {
     private String height;
     private String weight;
     private double calcHeight;
@@ -14,7 +14,7 @@ public class MBICalclate_impl implements MBICalclate {
     private boolean isA;
 
 
-    public MBICalclate_impl() {
+    public BMICalculate_impl() {
         this.bmi = 0;
         this.calcHeight = 0;
         this.calcWeight = 0;
