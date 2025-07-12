@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView tvBMI, tvComment;
     private EditText etHeight, etWeight;
     private CheckBox checkBox;
-    private Button button;
+    private Button clearButton, submitButton;
     private ImageButton imageButton;
     private DrawerLayout drawerLayout;
 
@@ -104,8 +104,8 @@ public class MainActivity extends AppCompatActivity {
      *      5. error message shows on a new message-window.
      * */
     private void setUpSubmitButton(int id) {
-        button = findViewById(id);
-        button.setOnClickListener(new View.OnClickListener() {
+        submitButton = findViewById(id);
+        submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // get both editText and convert to String.
@@ -176,8 +176,8 @@ public class MainActivity extends AppCompatActivity {
      *      3. clear(initialize) BMI comment.
      * **/
     private void setUpClearButton(int id) {
-        button = findViewById(id);
-        button.setOnClickListener(new View.OnClickListener() {
+        clearButton = findViewById(id);
+        clearButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 displayController.callClearDisplay();
