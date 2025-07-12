@@ -3,5 +3,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="35dp"
+            android:layout_margin="20dp"
+            android:gravity="center"
+            android:textColor="@color/DarkCyan"
+            android:text="Body mass index (BMI)"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="27dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:text=" BMI, formerly called the Quetelet index, is a measure for indicating nutritional status in adults. \n It is defined as a person’s weight in kilograms divided by the square of the person’s height in metres (kg/m2). \n For example, an adult who weighs 70 kg and whose height is 1.75 m will have a BMI of 22.9."
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:layout_margin="30dp"
+            android:text="source: https://www.who.int/europe/news-room/fact-sheets/item/a-healthy-lifestyle---who-recommendations"
+            />
+
+
+    </LinearLayout>
 
 </LinearLayout>
