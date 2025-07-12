@@ -14,7 +14,6 @@ public class Display_impl implements Display {
     public Display_impl(BMICalculate bmiCalculate) {
         this.bmiCalculate = bmiCalculate;
         clearDisplay();
-
     }
 
     @Override
