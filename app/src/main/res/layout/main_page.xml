@@ -120,7 +120,7 @@
                     android:layout_gravity="top|center_horizontal">
 
                     <CheckBox
-                        android:id="@+id/checkbox"
+                        android:id="@+id/checkboxId"
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"

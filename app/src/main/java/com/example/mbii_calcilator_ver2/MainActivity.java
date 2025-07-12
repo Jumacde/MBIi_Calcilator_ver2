@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         etHeight = findViewById(R.id.height);
         etWeight = findViewById(R.id.weight);
 
+        checkBox = findViewById(R.id.checkboxId);
 
     }
 }
