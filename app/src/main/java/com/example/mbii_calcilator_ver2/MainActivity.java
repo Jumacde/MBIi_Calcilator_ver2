@@ -27,16 +27,21 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.main_page);
 
+        tvBMI = findViewById(R.id.bmiText);
+        tvBMI.setText("0");
+        tvComment = findViewById(R.id.commentText);
+        tvComment.setText("");
+
+        etHeight = (EditText) findViewById(R.id.height);
+        etHeight.setText("0cm");
+        etWeight = (EditText) findViewById(R.id.weight);
+        etWeight.setText("0kg");
+
+        checkBox = findViewById(R.id.checkboxId);
+
         bmiCalculate = new BMICalculate_impl();
         display = new Display_impl(bmiCalculate);
 
-        tvBMI = findViewById(R.id.bmiText);
-        tvComment = findViewById(R.id.commentText);
-
-        etHeight = findViewById(R.id.height);
-        etWeight = findViewById(R.id.weight);
-
-        checkBox = findViewById(R.id.checkboxId);
 
     }
 }
