@@ -18,6 +18,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText etHeight, etWeight;
     private CheckBox checkBox;
     private Button clearButton, submitButton;
+    private Toolbar toolbar;
     private ImageButton imageButton;
     private DrawerLayout drawerLayout;
 
