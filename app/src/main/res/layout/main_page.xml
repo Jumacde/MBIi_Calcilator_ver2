@@ -30,7 +30,7 @@
                 android:layout_gravity="end"
                 android:layout_marginTop="30dp"
                 android:layout_marginRight="30dp"
-                android:background="@color/X11DarkGray">
+                >
 
                 <ImageButton
                     android:id="@+id/menuIcon"
@@ -41,7 +41,7 @@
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:contentDescription="Menu"
                     android:padding="10dp"
-                    android:src="@drawable/question_mark_24" />
+                    android:src="@drawable/more_horiz_24" />
 
             </LinearLayout>
 
