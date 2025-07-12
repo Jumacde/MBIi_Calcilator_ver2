@@ -1,6 +1,15 @@
 package com.example.mbii_calcilator_ver2;
 
+import android.app.AlertDialog;
+import android.content.Context;
 import android.os.Bundle;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+import android.text.style.ForegroundColorSpan;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -8,9 +17,11 @@ import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.example.mbii_calcilator_ver2.impl.BMICalculate_impl;
-import com.example.mbii_calcilator_ver2.impl.Display_impl;
+import com.example.mbii_calcilator_ver2.impl.ButtonController_impl;
+import com.example.mbii_calcilator_ver2.impl.DisplayControllerController_impl;
 
 public class MainActivity extends AppCompatActivity {
     private TextView tvBMI, tvComment;
@@ -19,7 +30,8 @@ public class MainActivity extends AppCompatActivity {
     private Button button;
 
     private BMICalculate bmiCalculate;
-    private Display display;
+    private DisplayController displayController;
+    private ButtonController buttonController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +51,131 @@ public class MainActivity extends AppCompatActivity {
 
         checkBox = findViewById(R.id.checkboxId);
 
+        setUpSubmitButton(R.id.submit);
+        setUpClearButton(R.id.clear);
+
         bmiCalculate = new BMICalculate_impl();
-        display = new Display_impl(bmiCalculate);
+        displayController = new DisplayControllerController_impl(bmiCalculate);
+        buttonController = new ButtonController_impl(bmiCalculate);
 
 
+        // cursor moves on the weight textview after input finish on the height and push "enter".
+        etHeight.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+                if (i == EditorInfo.IME_ACTION_NEXT || i == EditorInfo.IME_ACTION_DONE
+                        || (keyEvent != null && keyEvent.getKeyCode()
+                        == keyEvent.KEYCODE_ENTER && keyEvent.getAction()
+                        == keyEvent.ACTION_DOWN)) {
+                    // move cursor(focus) on the weight text view.
+                    etWeight.requestFocus();
+                    return true; // successfully execute
+                }
+                return false; // not execute
+            }
+        });
     }
+
+
+    /**
+     * method: set up the submit button function.
+     * @ Param: int id => to search id from xml.
+     *  this button sends number part of height and weight.
+     *  inputController -> inputController_impl.
+     *  buttonController -> buttonController_impl -> callPushSubmitButton -> pushSubmitButton -> bmiCalculate from BMICalculate_impl
+     *      1. get number part of height and weight from inputController.
+     *      2. calculate BMI via callPushSubmitButton from buttonController.
+     *      3.a. set BMI result and comment on the textView(display).
+     *      3.b. set comment for asian if you check the checkBox.
+     *      4. heide the keyboard after push the submit-button.
+     *      5. error message shows on a new message-window.
+     * */
+    private void setUpSubmitButton(int id) {
+        Button button = findViewById(id);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // get both editText and convert to String.
+                bmiCalculate.setHeight(etHeight.getText().toString());
+                bmiCalculate.setWeight(etWeight.getText().toString());
+                bmiCalculate.setIsA(checkBox.isChecked()); // check asian.
+                buttonController.callPushSubmitButton(); // calculate BMI.
+
+                // set up error message on a new message window.
+                String bmiResultText = displayController.callShowBMI();
+                String commentText = displayController.callShowComment();
+                String commentGoalText = displayController.callShowGoalWeight(); // show goal weight.
+
+                if ("ERROR_VALUE".equals(bmiResultText)
+                        || "ERROR_VALUE".equals(commentText)
+                        || "ERROR_VALUE".equals(commentGoalText)) {
+                    // show error dialog
+                    new AlertDialog.Builder(MainActivity.this)
+                            .setTitle("Error")
+                            .setMessage("failed height or weight." +
+                                    "\nplease input your height and weight again.")
+                            .setPositiveButton("OK", (dialog,whitch)-> {
+                                // nothing to do what does after pushing ok button.
+                            }).show();
+                    tvBMI.setText("0"); // initialise text
+                    tvComment.setText(""); // initialise text
+                    // set text color.
+                    tvComment.setTextColor(ContextCompat.
+                            getColor(MainActivity.this, android.R.color.black));
+                } else {
+                    tvBMI.setText(bmiResultText); // get the BMI result.
+                    tvComment.setText(commentText + "\n" + commentGoalText); // get comment and the goal weight.
+
+                    // set text color
+                    SpannableStringBuilder ssb = new SpannableStringBuilder();
+                    int commentTextColor;
+                    if (commentText.contains("normal weight.")) {
+                        commentTextColor = ContextCompat.getColor(MainActivity.this, android.R.color.holo_blue_dark);
+                    } else if (commentText.contains("underweight.") || commentText.contains("pre-obesity.")) {
+                        commentTextColor = ContextCompat.getColor(MainActivity.this, android.R.color.holo_orange_dark);
+                    } else { // obesity class I, II, III
+                        commentTextColor = ContextCompat.getColor(MainActivity.this, android.R.color.holo_red_dark);
+                    }
+                    ssb.append(commentText, new ForegroundColorSpan(commentTextColor), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    ssb.append("\n");
+                    // set to be color of commentGoalText black.
+                    ssb.append(commentGoalText, new ForegroundColorSpan(ContextCompat.getColor(
+                            MainActivity.this, android.R.color.black)), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    tvComment.setText(ssb);
+                }
+
+                // hide the keyboard
+                InputMethodManager inputMethodManager =
+                        (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                if(inputMethodManager != null) {
+                    inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+                }
+            }
+        });
+    }
+    /**
+     * method: set up the clear button function.
+     * @ Param: int id => to search id from xml.
+     *  execute "clearDisplay" method by wrap method from displayController_impl class via the interface class "displayController"
+     *  displayController -> displayController_impl-> callClearDisplay(wrap method) -> clearDisplay.
+     *      1. clear(initialize) inputted number part of height and weight.
+     *      2. clear(initialize) BMI calculate result.
+     *      3. clear(initialize) BMI comment.
+     * **/
+    private void setUpClearButton(int id) {
+        Button button = findViewById(id);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                displayController.callClearDisplay();
+                etHeight.setText("");
+                etWeight.setText("");
+                tvBMI.setText("0"); // initialise text
+                tvComment.setText(""); // initialise text
+            }
+        });
+    }
+
+
+
 }

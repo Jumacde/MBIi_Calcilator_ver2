@@ -2,16 +2,16 @@ package com.example.mbii_calcilator_ver2.impl;
 
 import android.annotation.SuppressLint;
 
-import com.example.mbii_calcilator_ver2.Display;
+import com.example.mbii_calcilator_ver2.DisplayController;
 import com.example.mbii_calcilator_ver2.BMICalculate;
 
-public class Display_impl implements Display {
+public class DisplayControllerController_impl implements DisplayController {
     private final BMICalculate bmiCalculate;
     private String bmiDisplay;
     private String commentDisplay;
     private double num;
 
-    public Display_impl(BMICalculate bmiCalculate) {
+    public DisplayControllerController_impl(BMICalculate bmiCalculate) {
         this.bmiCalculate = bmiCalculate;
         clearDisplay();
     }
