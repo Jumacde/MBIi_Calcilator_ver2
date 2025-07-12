@@ -2,6 +2,8 @@ package com.example.mbii_calcilator_ver2;
 
 public interface MBICalclate {
     // getter
+    String getHeight();
+    String getWeight();
     double getCalcHeight();
     double getCalcWeight();
     double getBmi();
@@ -11,6 +13,8 @@ public interface MBICalclate {
     boolean getIsA();
 
     // setter
+    void setHeight(String height);
+    void setWeight(String weight);
     void setCalcHeight(double calcHeight);
     void setCalcWeight(double calcWeight);
     void setBmi(double bmi);

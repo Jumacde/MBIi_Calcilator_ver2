@@ -25,6 +25,16 @@ public class MBICalclate_impl implements MBICalclate {
     }
 
     @Override
+    public String getHeight() {
+        return height;
+    }
+
+    @Override
+    public String getWeight() {
+        return weight;
+    }
+
+    @Override
     public double getCalcHeight() {
         return calcHeight;
     }
@@ -57,6 +67,16 @@ public class MBICalclate_impl implements MBICalclate {
     @Override
     public boolean getIsA() {
         return isA;
+    }
+
+    @Override
+    public void setHeight(String height) {
+        this.height = height;
+    }
+
+    @Override
+    public void setWeight(String weight) {
+        this.weight = weight;
     }
 
     @Override
