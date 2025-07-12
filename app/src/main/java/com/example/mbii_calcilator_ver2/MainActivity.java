@@ -15,11 +15,15 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.mbii_calcilator_ver2.impl.BMICalculate_impl;
 import com.example.mbii_calcilator_ver2.impl.ButtonController_impl;
@@ -30,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
     private EditText etHeight, etWeight;
     private CheckBox checkBox;
     private Button button;
+    private ImageButton imageButton;
+    private DrawerLayout drawerLayout;
 
     private BMICalculate bmiCalculate;
     private DisplayController displayController;
@@ -46,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
         tvComment = findViewById(R.id.commentText);
         tvComment.setText("");
 
+        drawerLayout = findViewById(R.id.drawer_layout);
+
         etHeight = (EditText) findViewById(R.id.height);
         etHeight.setText("0cm");
         etWeight = (EditText) findViewById(R.id.weight);
@@ -55,6 +63,9 @@ public class MainActivity extends AppCompatActivity {
 
         setUpSubmitButton(R.id.submit);
         setUpClearButton(R.id.clear);
+
+        setUpMenuIcon();
+        setupDrawerBackIcon();
 
         bmiCalculate = new BMICalculate_impl();
         displayController = new DisplayControllerController_impl(bmiCalculate);
@@ -93,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
      *      5. error message shows on a new message-window.
      * */
     private void setUpSubmitButton(int id) {
-        Button button = findViewById(id);
+        button = findViewById(id);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -165,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
      *      3. clear(initialize) BMI comment.
      * **/
     private void setUpClearButton(int id) {
-        Button button = findViewById(id);
+        button = findViewById(id);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -230,6 +241,46 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    // set up menu icon on drawer
+    private void setUpMenuIcon() {
+        imageButton = findViewById(R.id.menuIcon);
+        if ( imageButton != null) {
+            imageButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    drawerLayout.openDrawer(GravityCompat.END);
+                    Toast.makeText(MainActivity.this, "drawer success", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+        }
+    }
+
+    // set up back icon on drawer
+    private void setupDrawerBackIcon() {
+        imageButton = findViewById(R.id.menuIcon);
+        if (imageButton != null) {
+            imageButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(MainActivity.this, "close drawer", Toast.LENGTH_SHORT).show();
+                    drawerLayout.closeDrawer(GravityCompat.END);
+                }
+            });
+        }
+    }
+
+    // control function of drawer.
+    @Override
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.END)) { // if drawer opens than close it.
+            drawerLayout.closeDrawer(GravityCompat.END);
+        } else {
+            // if drawer is already closed than process back function.
+            super.onBackPressed();
+        }
     }
 
 
