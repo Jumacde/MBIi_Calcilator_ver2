@@ -48,16 +48,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.main_page);
 
         tvBMI = findViewById(R.id.bmiText);
-        tvBMI.setText("0");
+        tvBMI.setText("0.00");
         tvComment = findViewById(R.id.commentText);
         tvComment.setText("");
 
         drawerLayout = findViewById(R.id.drawer_layout);
 
         etHeight = (EditText) findViewById(R.id.height);
-        etHeight.setText("0cm");
+        etHeight.setText("cm");
         etWeight = (EditText) findViewById(R.id.weight);
-        etWeight.setText("0kg");
+        etWeight.setText("kg");
 
         checkBox = findViewById(R.id.checkboxId);
 
