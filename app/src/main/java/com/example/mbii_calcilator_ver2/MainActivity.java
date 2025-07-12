@@ -13,8 +13,8 @@ import com.example.mbii_calcilator_ver2.impl.BMICalculate_impl;
 import com.example.mbii_calcilator_ver2.impl.Display_impl;
 
 public class MainActivity extends AppCompatActivity {
-    private TextView textView;
-    private EditText editText;
+    private TextView tvBMI, tvComment;
+    private EditText etHeight, etWeight;
     private CheckBox checkBox;
     private Button button;
 
@@ -29,6 +29,13 @@ public class MainActivity extends AppCompatActivity {
 
         bmiCalculate = new BMICalculate_impl();
         display = new Display_impl(bmiCalculate);
+
+        tvBMI = findViewById(R.id.bmiText);
+        tvComment = findViewById(R.id.commentText);
+
+        etHeight = findViewById(R.id.height);
+        etWeight = findViewById(R.id.weight);
+
 
     }
 }
