@@ -3,8 +3,10 @@ package com.example.mbii_calcilator_ver2;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
+import android.text.TextWatcher;
 import android.text.style.ForegroundColorSpan;
 import android.view.KeyEvent;
 import android.view.View;
@@ -175,6 +177,61 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    /**
+     * method: TextWatcher: fix to show always a unit (cm and kg)
+     * @ Param: final EditText editText
+     * @ Param: final String unit
+     *      - cm or kg
+     * **/
+    private void setUpTextWatcher(final EditText editText, final String unit) {
+        editText.addTextChangedListener(new TextWatcher() {
+            private boolean isUpdate = false;
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                // nothing to do here
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                // nothing to do here
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (isUpdate) {
+                    return; // avoid infinite loop.
+                }
+                isUpdate = true;
+                String text = editable.toString();
+                // if already a unit(cm or kg) is there, nothing to do.
+                if (text.endsWith(unit) && text.length() > text.length() && text.substring(0, text.length() - unit.length()).matches(".*\\d.*")) {
+                    if (editText.getSelectionEnd() == text.length() - unit.length()) {
+                        isUpdate = false;
+                        return;
+                    }
+                }
+                // puck up a number and remove units(cm and kg).
+                String number = text.replaceAll("[^\\d.]", "");
+                // remove 0 if user input any number.
+                if (number.length() > 1 && number.startsWith("0") && !number.startsWith("0.")) {
+                    number = number.substring(1);
+                }
+                // if no number is there, add a unit.
+                if (!number.isEmpty()) {
+                    String textWithUnit = number + unit;
+                    editText.setText(textWithUnit);
+                    editText.setSelection(number.length()); // move the cursor to just after the number
+                } else if (text.isEmpty()) {
+                    editText.setText("0" + unit); // initialize the number("0").
+                    editText.setSelection(1); // move the cursor to just after initialized number("0").
+                }
+                isUpdate = false;
+            }
+        });
+
+    }
+
 
 
 
