@@ -11,7 +11,7 @@ public class SubActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        //setContentView(R.layout.sub_page);
+        setContentView(R.layout.sub_page);
 
     }
 
