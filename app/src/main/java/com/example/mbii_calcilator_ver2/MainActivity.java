@@ -57,9 +57,9 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawer_layout);
 
         etHeight = (EditText) findViewById(R.id.height);
-        etHeight.setText("cm");
+        etHeight.setText("0cm");
         etWeight = (EditText) findViewById(R.id.weight);
-        etWeight.setText("kg");
+        etWeight.setText("0kg");
 
         checkBox = findViewById(R.id.checkboxId);
 
