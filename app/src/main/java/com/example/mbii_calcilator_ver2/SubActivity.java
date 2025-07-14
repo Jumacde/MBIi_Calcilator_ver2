@@ -29,6 +29,10 @@ public class SubActivity extends AppCompatActivity {
 
         setupButtonClickListeners();
 
+        if (savedInstanceState == null) {
+            loadFragment(new FragmentActivityClassification()); }
+
+
     }
 
     private void loadFragment(Fragment fragment) {
