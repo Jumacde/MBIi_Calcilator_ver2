@@ -2,13 +2,9 @@ package com.example.mbii_calcilator_ver2;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -23,8 +19,6 @@ import com.example.mbii_calcilator_ver2.fragmentControl.FragmentActivityThisApp;
  * **/
 public class SubActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
-    private Button button;
-    private TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +26,8 @@ public class SubActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.sub_page);
         drawerLayout = findViewById(R.id.subDrawer_layout);
+
+        setupButtonClickListeners();
 
     }
 
