@@ -2,6 +2,7 @@ package com.example.mbii_calcilator_ver2;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +20,7 @@ import com.example.mbii_calcilator_ver2.fragmentControl.FragmentActivityThisApp;
  * **/
 public class SubActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
+    private Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
