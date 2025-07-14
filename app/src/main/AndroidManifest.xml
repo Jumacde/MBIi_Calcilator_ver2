@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".SubActivity"/>
-        <activity android:name=".MenuActivity"/>
+        <activity android:name=".MessageActivity"/>
     </application>
 
 </manifest>

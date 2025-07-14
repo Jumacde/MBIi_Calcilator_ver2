@@ -5,6 +5,9 @@ import android.os.Bundle;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * control menu tab
+ * **/
 public class SubActivity extends AppCompatActivity {
 
     @Override
