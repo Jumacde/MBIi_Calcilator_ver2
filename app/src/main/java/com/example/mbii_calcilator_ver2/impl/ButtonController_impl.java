@@ -12,7 +12,7 @@ public class ButtonController_impl implements ButtonController {
 
     @Override
     public void callPushSubmitButton() {
-        callPushSubmitButton();
+        pushSubmitButton();
     }
 
     private void pushSubmitButton() {
