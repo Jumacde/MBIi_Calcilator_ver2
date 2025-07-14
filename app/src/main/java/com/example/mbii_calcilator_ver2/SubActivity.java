@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,6 +24,7 @@ public class SubActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.sub_page);
+        drawerLayout = findViewById(R.id.subDrawer_layout);
 
         clickButton(R.id.bAboutThisApp);
         clickButton(R.id.bAboutBMI);
@@ -35,6 +37,7 @@ public class SubActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 drawerLayout.openDrawer(GravityCompat.END);
+                Toast.makeText(SubActivity.this, "drawer success", Toast.LENGTH_SHORT).show();
             }
         });
 
