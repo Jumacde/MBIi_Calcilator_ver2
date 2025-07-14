@@ -44,7 +44,7 @@ public class DisplayController_impl implements DisplayController {
 
     @Override
     public String callShowBMI() {
-        return callShowBMI();
+        return showBMI();
     }
 
     @Override

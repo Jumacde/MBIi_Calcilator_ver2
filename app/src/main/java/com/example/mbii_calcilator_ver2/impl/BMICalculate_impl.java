@@ -122,7 +122,7 @@ public class BMICalculate_impl implements BMICalculate {
 
     @Override
     public double callCalcGoalWeight() {
-        return 0;
+        return calcGoalWeight();
     }
 
     /**
