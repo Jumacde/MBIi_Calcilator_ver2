@@ -39,7 +39,7 @@
                     android:id="@+id/bAboutBMI"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="what is BMI"
+                    android:text="what is BMI?"
                     android:textSize="30dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginLeft="50dp"
@@ -50,7 +50,7 @@
                     android:id="@+id/bAboutNutritionalStatus"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="what is MBI-Classification"
+                    android:text="what is MBI-Classification?"
                     android:textSize="30dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginLeft="50dp"
@@ -58,14 +58,16 @@
                     android:textColor="@color/Alabaster"
                     android:backgroundTint="@color/DarkSkyBlue"/>
 
+                <FrameLayout
+                    android:id="@+id/fragment_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="30dp" />
+
             </LinearLayout>
 
         </ScrollView>
     </LinearLayout>
-    <FrameLayout
-        android:id="@+id/fragment_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="30dp" />
+
 
 </androidx.drawerlayout.widget.DrawerLayout>
