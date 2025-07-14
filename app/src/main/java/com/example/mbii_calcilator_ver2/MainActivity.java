@@ -67,7 +67,6 @@ public class MainActivity extends AppCompatActivity {
         setUpClearButton(R.id.clear);
 
         setUpMenuIcon();
-        setupDrawerBackIcon();
 
         bmiCalculate = new BMICalculate_impl();
         displayController = new DisplayController_impl(bmiCalculate);
@@ -260,19 +259,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    // set up back icon on drawer
-    private void setupDrawerBackIcon() {
-        imageButton = findViewById(R.id.menuIcon);
-        if (imageButton != null) {
-            imageButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(MainActivity.this, "close drawer", Toast.LENGTH_SHORT).show();
-                    drawerLayout.closeDrawer(GravityCompat.END);
-                }
-            });
-        }
-    }
 
     // control function of drawer.
     @Override
