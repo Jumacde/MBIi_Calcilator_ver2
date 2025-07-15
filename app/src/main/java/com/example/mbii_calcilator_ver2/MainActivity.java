@@ -15,6 +15,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
     private Button clearButton, submitButton;
     private ImageButton imageButton;
     private DrawerLayout drawerLayout;
+    private FrameLayout frameLayout;
+    private View view;
 
     private BMICalculate bmiCalculate;
     private DisplayController displayController;
@@ -275,7 +278,17 @@ public class MainActivity extends AppCompatActivity {
     // control function of drawer.
     @Override
     public void onBackPressed() {
-        if (drawerLayout.isDrawerOpen(GravityCompat.END)) { // if drawer opens than close it.
+        // set fragmentLayout
+        frameLayout = findViewById(R.id.fragment_container);
+        if (frameLayout != null && frameLayout.getVisibility() == view.VISIBLE) {
+            if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
+                getSupportFragmentManager().popBackStack();
+            } else {
+                getSupportFragmentManager().popBackStack();
+                frameLayout.setVisibility(view.GONE);
+            }
+
+        } else if (drawerLayout.isDrawerOpen(GravityCompat.END)) { // ifdrawer opens than close it.
             drawerLayout.closeDrawer(GravityCompat.END);
         } else {
             // if drawer is already closed than process back function.
