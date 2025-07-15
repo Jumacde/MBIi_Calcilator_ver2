@@ -74,6 +74,16 @@ public class MainActivity extends AppCompatActivity {
         setUpClearButton(R.id.clear);
 
         setUpMenuIcon();
+        setupDrawerFragmentListeners();
+
+        if (savedInstanceState == null) {
+            // loading fragment layout at staring apps.
+            loadFragment(new FragmentActivityClassification());
+        }
+
+        // close fragment_container at starting apps.
+        findViewById(R.id.fragment_container).setVisibility(View.GONE);
+
 
         bmiCalculate = new BMICalculate_impl();
         displayController = new DisplayController_impl(bmiCalculate);
