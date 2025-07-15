@@ -12,9 +12,11 @@ import androidx.fragment.app.Fragment;
 import com.example.mbii_calcilator_ver2.R;
 
 public class FragmentActivityBMI extends Fragment {
+    private View view;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.about_mbi, container, false);
+        view = inflater.inflate(R.layout.about_mbi, container, false);
+        return view;
     }
 }

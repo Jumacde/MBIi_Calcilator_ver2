@@ -18,14 +18,19 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
+import com.example.mbii_calcilator_ver2.fragmentControl.FragmentActivityBMI;
+import com.example.mbii_calcilator_ver2.fragmentControl.FragmentActivityClassification;
+import com.example.mbii_calcilator_ver2.fragmentControl.FragmentActivityThisApp;
 import com.example.mbii_calcilator_ver2.impl.BMICalculate_impl;
 import com.example.mbii_calcilator_ver2.impl.ButtonController_impl;
 import com.example.mbii_calcilator_ver2.impl.DisplayController_impl;
@@ -35,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
     private EditText etHeight, etWeight;
     private CheckBox checkBox;
     private Button clearButton, submitButton;
-    private Toolbar toolbar;
     private ImageButton imageButton;
     private DrawerLayout drawerLayout;
 
@@ -57,9 +61,9 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawer_layout);
 
         etHeight = (EditText) findViewById(R.id.height);
-        etHeight.setText("0cm");
+        //etHeight.setText("0cm");
         etWeight = (EditText) findViewById(R.id.weight);
-        etWeight.setText("0kg");
+        //etWeight.setText("0kg");
 
         checkBox = findViewById(R.id.checkboxId);
 
@@ -88,8 +92,16 @@ public class MainActivity extends AppCompatActivity {
                 return false; // not execute
             }
         });
-    }
 
+        // setting fragment layout of the sub_page
+        setupDrawerFragmentListeners();
+
+        if (savedInstanceState == null) {
+            loadFragment(new FragmentActivityClassification()); }
+
+        setUpTextWatcher(etHeight, "cm");
+        setUpTextWatcher(etWeight, "kg");
+    }
 
     /**
      * method: set up the submit button function.
@@ -271,6 +283,38 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+    private void loadFragment(Fragment fragment) {
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.replace(R.id.fragment_container, fragment);
+        ft.addToBackStack(null);
+        ft.commit();
+    }
+
+    private void setupDrawerFragmentListeners( ) {
+        findViewById(R.id.bAboutThisApp).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadFragment(new FragmentActivityThisApp());
+            }
+        });
+
+        findViewById(R.id.bAboutBMI).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadFragment(new FragmentActivityBMI());
+            }
+        });
+
+        findViewById(R.id.bAboutNutritionalStatus).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadFragment(new FragmentActivityClassification());
+            }
+        });
+
+    }
 
 
 
