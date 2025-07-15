@@ -29,7 +29,7 @@ public class FragmentActivityBMI extends Fragment {
 
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        textView = view.findViewById(R.id.bAboutBMI);
+        textView = view.findViewById(R.id.textId_bmi);
     }
 
 }
