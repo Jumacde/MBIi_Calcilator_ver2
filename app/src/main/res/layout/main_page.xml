@@ -236,6 +236,6 @@
         android:focusable="true"
         android:visibility="gone"
         android:elevation="10dp"
-        android:layout_gravity="center" />
+        />
 
 </androidx.drawerlayout.widget.DrawerLayout>

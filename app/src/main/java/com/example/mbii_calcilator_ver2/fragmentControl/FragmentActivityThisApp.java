@@ -13,7 +13,6 @@ import androidx.fragment.app.Fragment;
 import com.example.mbii_calcilator_ver2.R;
 
 public class FragmentActivityThisApp extends Fragment {
-    private View view;
     private TextView textView;
 
     public FragmentActivityThisApp() {
@@ -23,7 +22,7 @@ public class FragmentActivityThisApp extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.about_this_app, container, false);
+        View view = inflater.inflate(R.layout.about_this_app, container, false);
         return view;
     }
 
