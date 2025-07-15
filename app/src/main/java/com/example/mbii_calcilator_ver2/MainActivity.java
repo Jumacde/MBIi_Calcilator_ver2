@@ -91,6 +91,15 @@ public class MainActivity extends AppCompatActivity {
         buttonController = new ButtonController_impl(bmiCalculate);
 
 
+        cursorControl();
+        // setting fragment layout of the sub_page
+        setupDrawerFragmentListeners();
+        setUpTextWatcher( etHeight,"cm");
+        setUpTextWatcher(etWeight, "kg");
+        backFrameLayout();
+    }
+
+    private void cursorControl() {
         // cursor moves on the weight textview after input finish on the height and push "enter".
         etHeight.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -107,12 +116,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // setting fragment layout of the sub_page
-        setupDrawerFragmentListeners();
-        setUpTextWatcher( etHeight,"cm");
-        setUpTextWatcher(etWeight, "kg");
-    }
 
+    }
     /**
      * method: set up the submit button function.
      * @ Param: int id => to search id from xml.
@@ -338,6 +343,16 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+    // back function of frame layouts
+        private void backFrameLayout() {
+            frameLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onBackPressed();
+                }
+            });
+        }
 
 
 
