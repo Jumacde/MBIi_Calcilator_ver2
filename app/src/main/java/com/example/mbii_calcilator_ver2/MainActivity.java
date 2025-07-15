@@ -290,6 +290,8 @@ public class MainActivity extends AppCompatActivity {
         ft.replace(R.id.fragment_container, fragment);
         ft.addToBackStack(null);
         ft.commit();
+
+        findViewById(R.id.fragment_container).setVisibility(View.VISIBLE);
     }
 
     private void setupDrawerFragmentListeners( ) {
