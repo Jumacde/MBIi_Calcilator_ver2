@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
     private Button clearButton, submitButton;
     private ImageButton imageButton;
     private DrawerLayout drawerLayout;
+    private FrameLayout frameLayout;
 
     private BMICalculate bmiCalculate;
     private DisplayController displayController;
@@ -72,15 +73,17 @@ public class MainActivity extends AppCompatActivity {
         setUpClearButton(R.id.clear);
 
         setUpMenuIcon();
-        setupDrawerFragmentListeners();
+
+        frameLayout = findViewById(R.id.fragment_container);
 
         if (savedInstanceState == null) {
             // loading fragment layout at staring apps.
-            loadFragment(new FragmentActivityClassification());
+            //loadFragment(new FragmentActivityClassification());
+            frameLayout.setVisibility(View.GONE);
         }
 
         // close fragment_container at starting apps.
-        findViewById(R.id.fragment_container).setVisibility(View.GONE);
+        //findViewById(R.id.fragment_container).setVisibility(View.GONE);
 
 
         bmiCalculate = new BMICalculate_impl();
@@ -106,10 +109,6 @@ public class MainActivity extends AppCompatActivity {
 
         // setting fragment layout of the sub_page
         setupDrawerFragmentListeners();
-
-        if (savedInstanceState == null) {
-            loadFragment(new FragmentActivityClassification()); }
-
         setUpTextWatcher( etHeight,"cm");
         setUpTextWatcher(etWeight, "kg");
     }
@@ -287,7 +286,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         // set fragmentLayout
-        FrameLayout frameLayout = findViewById(R.id.fragment_container);
+        //FrameLayout frameLayout = findViewById(R.id.fragment_container);
         if (frameLayout != null && frameLayout.getVisibility() == View.VISIBLE) {
             if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
                 getSupportFragmentManager().popBackStack();
@@ -312,7 +311,10 @@ public class MainActivity extends AppCompatActivity {
         ft.addToBackStack(null);
         ft.commit();
 
-        findViewById(R.id.fragment_container).setVisibility(View.VISIBLE);
+        frameLayout.setVisibility(View.VISIBLE);
+        if (drawerLayout.isDrawerOpen(GravityCompat.END)) {
+            drawerLayout.closeDrawer(GravityCompat.END);
+        }
     }
 
     private void setupDrawerFragmentListeners( ) {
