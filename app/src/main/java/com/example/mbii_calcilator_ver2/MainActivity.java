@@ -43,8 +43,6 @@ public class MainActivity extends AppCompatActivity {
     private Button clearButton, submitButton;
     private ImageButton imageButton;
     private DrawerLayout drawerLayout;
-    private FrameLayout frameLayout;
-    private View view;
 
     private BMICalculate bmiCalculate;
     private DisplayController displayController;
@@ -289,13 +287,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         // set fragmentLayout
-        frameLayout = findViewById(R.id.fragment_container);
-        if (frameLayout != null && frameLayout.getVisibility() == view.VISIBLE) {
+        FrameLayout frameLayout = findViewById(R.id.fragment_container);
+        if (frameLayout != null && frameLayout.getVisibility() == View.VISIBLE) {
             if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
                 getSupportFragmentManager().popBackStack();
             } else {
                 getSupportFragmentManager().popBackStack();
-                frameLayout.setVisibility(view.GONE);
+                frameLayout.setVisibility(View.GONE);
             }
 
         } else if (drawerLayout.isDrawerOpen(GravityCompat.END)) { // ifdrawer opens than close it.
