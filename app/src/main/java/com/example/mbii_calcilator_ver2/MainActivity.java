@@ -312,9 +312,7 @@ public class MainActivity extends AppCompatActivity {
         ft.commit();
 
         frameLayout.setVisibility(View.VISIBLE);
-        if (drawerLayout.isDrawerOpen(GravityCompat.END)) {
-            drawerLayout.closeDrawer(GravityCompat.END);
-        }
+
     }
 
     private void setupDrawerFragmentListeners( ) {
