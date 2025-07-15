@@ -297,7 +297,7 @@ public class MainActivity extends AppCompatActivity {
                 getSupportFragmentManager().popBackStack();
             } else {
                 getSupportFragmentManager().popBackStack();
-                frameLayout.setVisibility(View.GONE);
+                frameLayout.setVisibility(View.INVISIBLE);
             }
 
         } else if (drawerLayout.isDrawerOpen(GravityCompat.END)) { // ifdrawer opens than close it.
